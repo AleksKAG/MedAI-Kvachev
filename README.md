@@ -38,3 +38,9 @@ HealthSummary AI — AI-система на Go для анализа медиц�
 - Загрузка: POST `/api/upload/analysis`
 - Анализ: GET `/api/summary/{patient_id}`
 - Демо: Примеры анализов в repo.
+
+## Автор
+Квачёв Александр — Go-разработчик  
+GitHub: [AleksKAG](https://github.com/AleksKAG)  
+Telegram: [@Kurtalex27](https://t.me/Kurtalex27)
+
