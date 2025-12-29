@@ -19,6 +19,7 @@ MedAI Kvachev — AI-система на Go для анализа медицин
 
  Инструменты и технологии
 - Язык: Go 1.21+
+- Frontend: Telegram-бот + Web App
 - Фреймворки: Fiber (HTTP), Ent (ORM), Gonum (stats).
 - Базы данных: MySQL.
 - AI/ML: Gonum, внешние API для NLP (gRPC).
