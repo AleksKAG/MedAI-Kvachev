@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: medai
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  ocr-service:
+    build:
+      context: ./ocr-service
+      dockerfile: Dockerfile.ocr
+    ports:
+      - "5000:5000"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      DATABASE_URL: "host=db user=postgres password=postgres dbname=medai port=5432 sslmode=disable"
+      WEBAPP_URL: "http://127.0.0.1:8082"  # для локального теста Web App
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+      - ocr-service
+
+  # Для локального просмотра Web App (не обязательно)
+  webapp:
+    image: nginx:alpine
+    volumes:
+      - ./webapp:/usr/share/nginx/html
+    ports:
+      - "8082:80"
