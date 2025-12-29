@@ -40,6 +40,31 @@ MedAI Kvachev — AI-система на Go для анализа медицин
 - Анализ: GET `/api/summary/{patient_id}`
 - Демо: Примеры анализов в repo.
 
+🚀 Как запустить локально
+Установите Docker.
+Создайте .env файл:
+env
+1  TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
+
+Запустите:
+bash
+1  docker-compose up --build
+
+В Telegram:
+Напишите боту /start
+Нажмите «Открыть MedAI»
+
+Загрузите фото анализа → получите интерпретацию
+💡 Для облака: загрузите webapp/ на Vercel/Netlify, обновите WEBAPP_URL.
+
+🌐 Развёртывание в облаке (Render)
+Залейте backend и ocr-service как отдельные Web Services.
+Залейте webapp на Vercel → получите URL вида https://medai-webapp.vercel.app.
+В backend укажите
+WEBAPP_URL=https://medai-webapp.vercel.app
+Установите webhook
+curl "https://api.telegram.org/botТОКЕН/setWebhook?url=https://ваш-backend.onrender.com"
+
 ## Автор
 Квачёв Александр — Go-разработчик  
 GitHub: [AleksKAG](https://github.com/AleksKAG)  
